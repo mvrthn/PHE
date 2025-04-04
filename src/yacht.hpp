@@ -13,9 +13,9 @@ namespace PHEApp {
 struct Model {
     const float mass = 1;
     const float inertia = 1;
-    const PHE::Vector2f centerofMass = {0, 0};
-    const PHE::Vector2f rudderPos = {0, 0};
-    const PHE::Vector2f propellerPos = {0, 0};
+    const PHE::Vector2f centerofMass = {0, 44};
+    const PHE::Vector2f rudderPos = {0, 256};
+    const PHE::Vector2f propellerPos = {0, 170};
     const PHE::Vector2f centerOfProgDrag = {0, 0};
     const PHE::Vector2f centerOFRotDrag = {0, 0};
 };
