@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <array>
+#include <vector>
 
 #include "vectors.hpp"
 #include "force.hpp"
@@ -9,15 +9,19 @@
 
 namespace PHE {
 
-template<int size>
 class Object {
 public:
-    Object(float mass, float inertia, Vector2f center, std::array<Vector2f, size> forces);
+    Object(float _mass, float _inertia, Vector2f _center);
 
-    inline void setPosition(Vector2f pos) { position = pos; }
-    inline const Vector2f& getPosition() const { return position; }
+protected:
+    void setForces(std::vector<Force>& _forces);
 
-    void update();
+    void setPosition(const Vector2f& _position);
+    const Vector2f& getPosition() const;
+
+    const float getRotationAngle() const;
+
+    void update(float dt);
     
 private:
     Vector2f position;
@@ -31,7 +35,7 @@ private:
 
     const Vector2f center; // center of mass
 
-    const std::array<Vector2f, size> forces;
+    std::vector<Force> forces;
 };
     
 } // namespace PHE 

@@ -1,47 +1,49 @@
 #include "object.hpp"
 
 
+#include <algorithm>
+
+
 namespace PHE {
 
-template<int size>
-Object<size>::Object(float m, float i, Vector2f p, std::array<Vector2f, size> f): mass(m), inertia(i), center(p), forces(f) {
+Object::Object(float m, float i, Vector2f p): mass(m), inertia(i), center(p) {
     position = {0, 0};
     velocity = {0, 0};
     rotationAngle = 0;
     rotationSpeed = 0;
 }
 
-template<int size>
-void Object<size>::update() {
+void Object::setForces(std::vector<Force>& fs) {
+    forces = std::move(fs);
+}
+
+void Object::setPosition(const Vector2f& _position) {
+    position = _position;
+}
+
+const Vector2f& Object::getPosition() const {
+    return position;
+}
+
+const float Object::getRotationAngle() const {
+    return rotationAngle;
+}
+
+void Object::update(float dt) {
     Vector2f resultant(0, 0);
     float rotation = 0;
 
     for(Force& force : forces) {
-        force.update();
-
-        const Vector2f& f = force.getVector();
-        const Vector2f& d = force.getOrigin();
-
-        const float dv = d();
-        const float e = 1 / (dv * dv);
-        const float dx2 = d.x * d.x * e;
-        const float dy2 = d.y * d.y * e;
-        const float dxdy = d.x * d.y * e;
-
-        resultant += Vector2f(dx2 * f.x, dxdy * f.x); 
-        resultant += Vector2f(dxdy * f.y, dy2 * f.y);
-
-        rotation -= dv * d.y * f.x * e;
-        rotation += dv * d.x * f.y * e;
+        force.update(resultant, rotation);
     }
     
     resultant /= mass;
     velocity += resultant;
-    position += velocity;
+    position += velocity * dt;
 
     rotation /= inertia;
     rotationSpeed += rotation;
-    rotationAngle += rotationSpeed;
+    rotationAngle += rotationSpeed * dt;
 }
 
 } // namespace PHE

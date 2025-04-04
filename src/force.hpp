@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <cassert>
+#include <functional>
 
 #include "vectors.hpp"
 
@@ -10,21 +10,24 @@ namespace PHE {
 
 class Force {
 public:
-    Force(Vector2f _vector, Vector2f _origin, void (*_eval)(Vector2f&)): vector(_vector), origin(_origin), eval(_eval) {};
-    Force(Vector2f _origin, void (*_eval)(Vector2f&)): origin(_origin), eval(_eval) {};
-    Force(const Force& other): vector(other.vector), origin(other.origin), eval(other.eval) {};
+    Force(Vector2f _vector, Vector2f _origin, std::function<void(Vector2f&)> _eval): vector(_vector), eval(_eval) { move(_origin); };
+    Force(Vector2f _origin, std::function<void(Vector2f&)> _eval): eval(_eval) { move(_origin); };
+    Force(const Force& other): vector(other.vector), eval(other.eval) { move(other.origin); };
     
-    inline const Vector2f& getVector() const { return vector; }
-    inline const Vector2f& getOrigin() const { return origin; }
-    
-    inline void move(const Vector2f& new_origin) { origin = new_origin; }
+    void move(const Vector2f& _origin);
 
-    inline void update() { eval(vector); }
+    void update(Vector2f& prog, float& rot);
     
 private:
     Vector2f vector; // force vector
     Vector2f origin; // point of application
-    void (*eval)(Vector2f&);
+    std::function<void(Vector2f&)> eval; //evaluation function
+
+    float dv;
+    float e;
+    float dx2;
+    float dy2;
+    float dxdy;
 };
 
 } // namespace PHE

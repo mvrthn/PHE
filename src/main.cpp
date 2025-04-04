@@ -6,7 +6,7 @@
 
 
 int main() {
-    PHE::App app;
+    PHEApp::App app;
 
     app.run();
 

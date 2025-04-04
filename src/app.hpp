@@ -6,25 +6,18 @@
 #include "vectors.hpp"
 #include "force.hpp"
 
-#define WIDTH 1600
-#define HEIGHT 1000
+constexpr int WIDTH = 1600;
+constexpr int HEIGHT = 1000;
 
 
-namespace PHE {
+namespace PHEApp {
 
 class App {
 public:
     void run();
 
 private:
-    void drawDisplacement(sf::RenderTarget&, const Force&);
-    void drawResulatants(sf::RenderTarget&, const Force&);
-    void drawVector(sf::RenderTarget&, const Vector2f&, const Vector2f&);
-    void drawForce(sf::RenderTarget&, const Force&);
-    void drawPlain(sf::RenderTarget&);
-    void drawCircle(sf::RenderTarget&);
-
-    const Vector2f coord00 = Vector2f(WIDTH / 2, HEIGHT / 2);
+    sf::RenderWindow window = sf::RenderWindow({WIDTH, HEIGHT}, "Yacht Sim", sf::Style::Close);
 };
 
-} // namespace PHE
+} // namespace PHEApp
