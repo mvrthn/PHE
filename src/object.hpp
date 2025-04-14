@@ -13,13 +13,13 @@ class Object {
 public:
     Object(float _mass, float _inertia, Vector2f _pos);
 
+    const Vector2f& getPosition() const;
+    const Vector2f& getVelocity() const;
+    const float getRotationAngle() const;
+    const float getRotationSpeed() const;
+
 protected:
     void setForces(std::vector<Force>& _forces);
-
-    void setPosition(const Vector2f& _position);
-    const Vector2f& getPosition() const;
-
-    const float getRotationAngle() const;
 
     void update(float dt);
     

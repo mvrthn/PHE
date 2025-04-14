@@ -20,8 +20,8 @@ void Force::move(const Vector2f& _origin) {
     }
 }
 
-void Force::update(Vector2f& resultant, float& rotation) {
-    eval(vector);
+void Force::update(const Object& object, Vector2f& resultant, float& rotation) {
+    eval(vector, object);
 
     resultant += Vector2f(dx2 * vector.x, dxdy * vector.x); 
     resultant += Vector2f(dxdy * vector.y, dy2 * vector.y);

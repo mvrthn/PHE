@@ -16,16 +16,20 @@ void Object::setForces(std::vector<Force>& fs) {
     forces = std::move(fs);
 }
 
-void Object::setPosition(const Vector2f& _position) {
-    position = _position;
-}
-
 const Vector2f& Object::getPosition() const {
     return position;
 }
 
+const Vector2f& Object::getVelocity() const {
+    return velocity;
+}
+
 const float Object::getRotationAngle() const {
     return rotationAngle;
+}
+
+const float Object::getRotationSpeed() const {
+    return rotationSpeed;
 }
 
 void Object::update(float dt) {
@@ -33,7 +37,7 @@ void Object::update(float dt) {
     float rotation = 0;
 
     for(Force& force : forces) {
-        force.update(resultant, rotation);
+        force.update(*this, resultant, rotation);
     }
     
     resultant /= mass;
