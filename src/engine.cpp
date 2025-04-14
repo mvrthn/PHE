@@ -3,8 +3,16 @@
 
 namespace PHEApp {
 
-void Engine::evalForce(PHE::Vector2f& vector) {
+void Engine::update() {
+
+}
+
+void Engine::display(sf::RenderTarget& window) {
     
+}
+
+void Engine::evalForce(PHE::Vector2f& vector) {
+    vector = {1, 1};
 }
 
 } // namespace PHEApp

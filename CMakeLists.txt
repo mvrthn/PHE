@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.25)
 project(PHE LANGUAGES CXX)
 
 file(GLOB SRC_PATH "src/*.cpp")
@@ -16,7 +16,7 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 add_executable(PHE ${SRC_PATH})
-target_link_libraries(PHE PRIVATE sfml-graphics)
+target_link_libraries(PHE PRIVATE sfml-graphics sfml-window sfml-system)
 target_compile_features(PHE PRIVATE cxx_std_23)
 
 if(WIN32)

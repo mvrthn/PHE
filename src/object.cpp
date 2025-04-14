@@ -6,8 +6,7 @@
 
 namespace PHE {
 
-Object::Object(float m, float i, Vector2f p): mass(m), inertia(i), center(p) {
-    position = {0, 0};
+Object::Object(float m, float i, Vector2f p): mass(m), inertia(i), position(p) {
     velocity = {0, 0};
     rotationAngle = 0;
     rotationSpeed = 0;
@@ -38,11 +37,11 @@ void Object::update(float dt) {
     }
     
     resultant /= mass;
-    velocity += resultant;
+    velocity += resultant * dt;
     position += velocity * dt;
 
     rotation /= inertia;
-    rotationSpeed += rotation;
+    rotationSpeed += rotation * dt;
     rotationAngle += rotationSpeed * dt;
 }
 

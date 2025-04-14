@@ -11,7 +11,7 @@ namespace PHE {
 
 class Object {
 public:
-    Object(float _mass, float _inertia, Vector2f _center);
+    Object(float _mass, float _inertia, Vector2f _pos);
 
 protected:
     void setForces(std::vector<Force>& _forces);
@@ -32,8 +32,6 @@ private:
     
     const float mass;
     const float inertia;
-
-    const Vector2f center; // center of mass
 
     std::vector<Force> forces;
 };

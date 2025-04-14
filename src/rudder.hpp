@@ -1,21 +1,22 @@
 #pragma once
 
 
-#include <SFML/Graphics.hpp>
+#include "component.hpp"
 
-#include "vectors.hpp"
+
+constexpr int len = 16;
 
 
 namespace PHEApp {
 
-class Rudder {
+class Rudder : Component {
 public:
     void update();
     void display(sf::RenderTarget&);
     void evalForce(PHE::Vector2f&);
 
 private:
-    int angle;
+    int angle = 0;
 };
 
 } // namespace PHEApp

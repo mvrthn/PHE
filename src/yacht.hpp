@@ -10,28 +10,24 @@
 
 namespace PHEApp {
 
-struct Model {
-    const float mass = 1;
-    const float inertia = 1;
-    const PHE::Vector2f centerofMass = {0, 44};
-    const PHE::Vector2f rudderPos = {0, 256};
-    const PHE::Vector2f propellerPos = {0, 170};
-    const PHE::Vector2f centerOfProgDrag = {0, 0};
-    const PHE::Vector2f centerOFRotDrag = {0, 0};
-};
+namespace Model {
+    constexpr float mass = 1;
+    constexpr float inertia = 1;
+    constexpr PHE::Vector2f rudderPos = {0, 128};
+    constexpr PHE::Vector2f propellerPos = {0, 96};
+    constexpr PHE::Vector2f centerOfProgDrag = {0, 0};
+    constexpr PHE::Vector2f centerOFRotDrag = {0, 0};
+} // namespace Model
 
 
 class Yacht : public PHE::Object {
 public:
-    Yacht();
+    Yacht(const PHE::Vector2f&);
 
     void update();
     void display(sf::RenderWindow&);
 
-    inline void setPosition(const PHE::Vector2f& pos) { PHE::Object::setPosition(pos); };
-
 private:
-    Model model;
     Engine engine;
     Rudder rudder;
 

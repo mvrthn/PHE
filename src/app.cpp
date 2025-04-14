@@ -1,15 +1,19 @@
 #include "app.hpp"
 
+#include <SFML/Graphics.hpp>
+
 #include "yacht.hpp"
+#include "vectors.hpp"
+#include "force.hpp"
 
 
 namespace PHEApp {
 
 void App::run() {
-    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "PHE");
+    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "PHE", sf::Style::Close);
+    window.setFramerateLimit(100);
 
-    Yacht yacht;
-    yacht.setPosition({WIDTH / 2, HEIGHT / 2});
+    Yacht yacht({WIDTH / 2, HEIGHT / 2});
 
     while(window.isOpen()) {
 

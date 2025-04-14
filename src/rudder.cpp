@@ -3,8 +3,16 @@
 
 namespace PHEApp {
 
-void Rudder::evalForce(PHE::Vector2f& vector) {
+void Rudder::update() {
+
+}
+
+void Rudder::display(sf::RenderTarget& window) {
     
+}
+
+void Rudder::evalForce(PHE::Vector2f& vector) {
+    vector = {1, 1};
 }
 
 } // namespace PHEApp
