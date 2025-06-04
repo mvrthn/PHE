@@ -10,8 +10,9 @@ namespace PHEApp {
 class Engine : Component, public PHE::Evaluator {
 public:
     void update(InputType&);
-    void display(sf::RenderTarget&);
+    void display(sf::RenderTarget&) const;
     
+protected:
     void eval(PHE::Vector2f&, const PHE::Object&) const;
 
 private:

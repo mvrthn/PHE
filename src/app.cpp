@@ -5,6 +5,7 @@
 #include "yacht.hpp"
 #include "vectors.hpp"
 #include "force.hpp"
+#include "types.hpp"
 
 
 namespace PHEApp {
@@ -23,7 +24,9 @@ void App::run() {
                 window.close();
         }
 
-        yacht.update();
+        InputType it;
+
+        yacht.update(it, 0.01);
 
         window.clear();
         

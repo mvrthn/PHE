@@ -15,12 +15,15 @@ class Yacht : public PHE::Object {
 public:
     Yacht(const PHE::Vector2f&);
 
-    void update();
+    void update(InputType&, float);
     void display(sf::RenderWindow&);
 
 private:
-    Engine engine;
     Rudder rudder;
+    Engine engine;
+
+    HydroDragProg hdp;
+    HydroDragRot hdr;
 
     sf::Texture texture;
     sf::Sprite sprite;

@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "vectors.hpp"
 #include "force.hpp"
 
 

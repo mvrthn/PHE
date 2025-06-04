@@ -12,7 +12,7 @@ void Rudder::update(InputType& it) {
     }
 }
 
-void Rudder::display(sf::RenderTarget& window) {
+void Rudder::display(sf::RenderTarget& window) const {
     
 }
 

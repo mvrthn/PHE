@@ -2,12 +2,12 @@
 
 
 #include "vectors.hpp"
-#include "evaluator.hpp"
 
 
 namespace PHE {
 
 class Object;
+class Evaluator;
 
 class Force {
 public:

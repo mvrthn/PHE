@@ -18,7 +18,7 @@ void Engine::update(InputType& it) {
     }
 }
 
-void Engine::display(sf::RenderTarget& window) {
+void Engine::display(sf::RenderTarget& window) const {
     
 }
 
