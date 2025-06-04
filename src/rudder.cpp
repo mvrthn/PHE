@@ -3,15 +3,20 @@
 
 namespace PHEApp {
 
-void Rudder::update() {
-
+void Rudder::update(InputType& it) {
+    if(it & InputType::RUDDER_LEFT) {
+        angle = std::max(angle - STEP, -MAX_ANGLE);
+    }
+    else if(it & InputType::RUDDER_RIGHT) {
+        angle = std::min(angle + STEP, MAX_ANGLE);
+    }
 }
 
 void Rudder::display(sf::RenderTarget& window) {
     
 }
 
-void Rudder::evalForce(PHE::Vector2f& vector, const PHE::Object& object) {
+void Rudder::eval(PHE::Vector2f& vector, const PHE::Object& object) const {
     vector = {1000, 1000};
 }
 

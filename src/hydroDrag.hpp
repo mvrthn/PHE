@@ -1,16 +1,19 @@
 #pragma once
 
 
-#include "object.hpp"
+#include "evaluator.hpp"
 
 
 namespace PHEApp {
 
-namespace HydroDrag {
+class HydroDragProg : public PHE::Evaluator {
+protected:
+    void eval(PHE::Vector2f&, const PHE::Object&) const;
+};
 
-void evalProgForce(PHE::Vector2f&, const PHE::Object&);
-void evalRotaForce(PHE::Vector2f&, const PHE::Object&);
-
-} // namespace HydroDrag
+class HydroDragRot : public PHE::Evaluator {
+protected:
+    void eval(PHE::Vector2f&, const PHE::Object&) const;
+};
 
 } // namespace PHEApp
