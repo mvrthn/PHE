@@ -17,7 +17,7 @@ void Rudder::display(sf::RenderTarget& window) const {
 }
 
 void Rudder::eval(PHE::Vector2f& vector, const PHE::Object& object) const {
-    vector = {1000, 1000};
+    vector = {0, 0};
 }
 
 } // namespace PHEApp

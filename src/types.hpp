@@ -6,7 +6,8 @@
 
 namespace PHEApp {
 
-enum InputType {
+enum InputType : int {
+    NONE = 0,
     RUDDER = 1,
     RUDDER_LEFT = 2 + RUDDER,
     RUDDER_RIGHT = 4 + RUDDER,
@@ -17,6 +18,12 @@ enum InputType {
     GEAR_UP = 128 + ENGINE,
     GEAR_DOWN = 256 + ENGINE
 };
+
+constexpr InputType operator~(InputType it) { return InputType(~int(it)); }
+constexpr InputType operator|(InputType it1, InputType it2) { return InputType(int(it1) | int(it2)); }
+constexpr InputType& operator|=(InputType& it1, InputType it2) { return it1 = it1 | it2; }
+constexpr InputType operator&(InputType it1, InputType it2) { return InputType(int(it1) & int(it2)); }
+constexpr InputType& operator&=(InputType& it1, InputType it2) { return it1 = it1 & it2; }
 
 template<int LOW, int HIGH, int STEP>
 class Var {

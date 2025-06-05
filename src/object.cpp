@@ -39,6 +39,8 @@ void Object::update(float dt) {
     for(Force& force : forces) {
         force.update(*this, resultant, rotation);
     }
+
+    //std::cout << resultant << "\n";
     
     resultant /= mass;
     velocity += resultant * dt;

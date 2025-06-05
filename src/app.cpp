@@ -16,15 +16,24 @@ void App::run() {
 
     Yacht yacht({WIDTH / 2, HEIGHT / 2});
 
-    while(window.isOpen()) {
+    while(window.isOpen()) {    
 
+        InputType it = NONE;
         sf::Event event;
         while(window.pollEvent(event)) {
             if(event.type == sf::Event::Closed)
                 window.close();
+            else if(event.type == sf::Event::KeyPressed) {
+                switch(event.key.code) {
+                case sf::Keyboard::PageUp:
+                    it |= GEAR_UP;
+                    break;
+                case sf::Keyboard::PageDown:
+                    it |= GEAR_DOWN;
+                    break;
+                }
+            }
         }
-
-        InputType it;
 
         yacht.update(it, 0.01);
 

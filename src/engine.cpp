@@ -4,6 +4,7 @@
 namespace PHEApp {
 
 void Engine::update(InputType& it) {
+    it &= ~InputType::ENGINE;
     if(it & InputType::RPM_UP) {
         rpm = std::min(rpm + STEP, MAX_RPM);
     }
@@ -23,7 +24,7 @@ void Engine::display(sf::RenderTarget& window) const {
 }
 
 void Engine::eval(PHE::Vector2f& vector, const PHE::Object& object) const {
-    vector = {1000, 1000};
+    vector = {0, -100.f * gear * rpm};
 }
 
 } // namespace PHEApp
